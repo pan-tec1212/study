@@ -8,22 +8,6 @@ const ScreenB = ({navigation, route}) => {
       <View style={styles.container}>
         <Text style={styles.text}>- B画面 -</Text>
       </View>
-      {/* <TouchableOpacity
-        onPress={() => {
-          navigation.goBack();
-          // navigation.push('ScreenC');
-          // navigation.navigate('ScreenA', {
-          //   // navigation: navigation,
-          //   screenName: 'modotta',
-          //   // filterIcons: [
-          //   //   {key: '1', name: 'dddd'},
-          //   //   {key: '2', name: 'ddfffdd'},
-          //   //   {key: '3', name: 'ddddddffdd'},
-          //   // ],
-          // });
-        }}>
-        <Text style={styles.buttonTxt}>ScreenA</Text>
-      </TouchableOpacity> */}
       <TouchableOpacity
         onPress={() => {
           navigation.push('ScreenB');

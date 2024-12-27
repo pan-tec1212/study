@@ -16,6 +16,7 @@ function App(): React.JSX.Element {
   };
 
   return (
+    <>
       {/* navigationの設定 */}
       <NavigationContainer>
         <SafeAreaView style={[styles.backgroundStyle, backgroundStyle]}>
@@ -23,6 +24,7 @@ function App(): React.JSX.Element {
           <AppStackNavigator />
         </SafeAreaView>
       </NavigationContainer>
+    </>
   );
 }
 
