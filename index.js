@@ -1,6 +1,7 @@
 /**
  * @format
  */
+
 import React from 'react';
 import {AppRegistry, StyleSheet} from 'react-native';
 import App from './App';

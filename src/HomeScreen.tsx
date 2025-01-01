@@ -8,8 +8,9 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
-import {RootStackParamList} from '../types/appTypes';
+import {RootStackParamList} from '../types/RootStackParamList';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
+import BottomSheet from '@gorhom/bottom-sheet';
 
 type navProps = {
   navigation: NativeStackNavigationProp<RootStackParamList, 'Home'>;
@@ -21,6 +22,8 @@ type navProps = {
  * @returns ホーム画面
  */
 export default function HomeScreen({navigation}: navProps): React.JSX.Element {
+  const bottomSheeetRef = React.useRef<BottomSheet>(null);
+  const snapPoints = React.useMemo(() => [100, 300, 500], []); // 数値で指定
   const isDarkMode = useColorScheme() === 'dark';
   const backgroundStyle = {
     backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
@@ -35,45 +38,31 @@ export default function HomeScreen({navigation}: navProps): React.JSX.Element {
       <View style={styles.buttonContainar}>
         <TouchableOpacity
           onPress={() => {
-            navigation.navigate('RootMapScreen');
+            if (bottomSheeetRef.current) {
+              bottomSheeetRef.current.snapToIndex(0);
+            }
           }}>
           <Text style={styles.buttonTxt}>test</Text>
         </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('Test');
-          }}>
-          <Text style={styles.buttonTxt}>test2</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('ScreenA', {
-              // navigation: navigation,
-              screenName: 'ScreenA',
-              filterIcons: [
-                {key: '1', name: 'lemon'},
-                {key: '2', name: 'apple'},
-                {key: '3', name: 'marinBlue'},
-                {key: '4', name: 'tomato'},
-                {key: '5', name: 'banana'},
-                {key: '6', name: 'kiwi'},
-              ],
-            });
-          }}>
-          <Text style={styles.buttonTxt}>ScreenA</Text>
-        </TouchableOpacity>
-        <TouchableOpacity
-          onPress={() => {
-            navigation.navigate('SampleClass', {
-              screenName: 'クラスコンポーネント',
-              sampleInfo: {
-                name: 'tanaka',
-                age: 14,
-              },
-            });
-          }}>
-          <Text style={styles.buttonTxt}>サンプルクラス</Text>
-        </TouchableOpacity>
+        <BottomSheet index={0} snapPoints={snapPoints}>
+          <TouchableOpacity
+            onPress={() => {
+              navigation.navigate('ScreenA', {
+                // navigation: navigation,
+                screenName: 'ScreenA',
+                filterIcons: [
+                  {key: '1', name: 'lemon'},
+                  {key: '2', name: 'apple'},
+                  {key: '3', name: 'marinBlue'},
+                  {key: '4', name: 'tomato'},
+                  {key: '5', name: 'banana'},
+                  {key: '6', name: 'kiwi'},
+                ],
+              });
+            }}>
+            <Text style={styles.buttonTxt}>ScreenA</Text>
+          </TouchableOpacity>
+        </BottomSheet>
       </View>
     </>
   );

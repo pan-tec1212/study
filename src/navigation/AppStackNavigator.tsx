@@ -1,10 +1,8 @@
 import React from 'react';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import HomeScreen from '../HomeScreen';
-import ScreenA from '../test/screen/ScreenA';
-import ScreenB from '../test/screen/ScreenB';
-import ScreenC from '../test/screen/ScreenC';
-import ScreenD from '../test/screen/ScreenD';
+import ScreenA from '../ScreenA';
+import ScreenB from '../ScreenB';
 const Stack = createNativeStackNavigator();
 
 const AppStackNavigator = () => {
@@ -40,20 +38,6 @@ const AppStackNavigator = () => {
         component={ScreenB}
         options={{
           title: 'ScreenB',
-        }}
-      />
-      <Stack.Screen
-        name="ScreenC"
-        component={ScreenC}
-        options={{
-          title: 'ScreenC',
-        }}
-      />
-      <Stack.Screen
-        name="ScreenD"
-        component={ScreenD}
-        options={{
-          title: 'ScreenD',
         }}
       />
     </Stack.Navigator>

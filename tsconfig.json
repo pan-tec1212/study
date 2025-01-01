@@ -1,3 +1,12 @@
 {
-  "extends": "@react-native/typescript-config/tsconfig.json"
+  "extends": "@react-native/typescript-config/tsconfig.json",
+  "compilerOptions": {
+    "moduleResolution": "NodeNext", // Node.js 22 に最適
+    "customConditions": ["custom"], // 必要に応じてカスタム条件
+    "target": "esnext", // Node.js 22 は最新の JS 機能に対応
+    "module": "NodeNext", // ESM を採用
+    "strict": false,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true
+  }
 }

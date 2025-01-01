@@ -1,5 +1,5 @@
 /**
- * ReactNativeMap試験用プロジェクト
+ * 課題用アプリ
  */
 
 import React from 'react';
